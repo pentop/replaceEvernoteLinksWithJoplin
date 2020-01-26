@@ -11,7 +11,8 @@ notesUrl = f'{baseUrl}notes?token{token}'
 
 replacements={
     'evernote:///view/guid1/antherGuid1/':':/joplinLink1', #put your evernote links & joplin links here....
-    'evernote:///view/guid2/antherGuid2/':':/joplinLink2',
+    'evernote:///view/guid2/antherGuid2/':':/joplinLink2'
+    #etc, etc, etc
 }
 
 def replaceTextInNote(note, textToReplace, replacement):
