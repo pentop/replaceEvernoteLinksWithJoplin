@@ -3,8 +3,8 @@ import json
 from sys import argv
 
 #ToDo
+# Call out to evernote and try to generate replacements list automatically
 # create a backup before we start! https://discourse.joplinapp.org/t/best-method-to-backup-notes/1135
-# pull out the token somewhere safe
 # Log out some kind of indication of how long the script has to run
 
 replacements={
