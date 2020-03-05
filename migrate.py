@@ -5,6 +5,7 @@ from sys import argv
 #ToDo
 # create a backup before we start! https://discourse.joplinapp.org/t/best-method-to-backup-notes/1135
 # pull out the token somewhere safe
+# Log out some kind of indication of how long the script has to run
 
 replacements={
     'evernote:///view/237202231/s7/82254d2d-f19d-49b6-9ab6-7c57626e6897/82254d2d-f19d-49b6-9ab6-7c57626e6897/':':/79bfb652ff4c41d89b42b6d92cc3469d', #Home Page
@@ -22,7 +23,7 @@ class JoplinConnection():
         self.baseUrl = 'http://localhost:41184/'
         self.tokenUrlPart = f'&token={self.joplin_token}'
         self.notesUrl = f'{self.baseUrl}notes?token{self.joplin_token}'
-        self.commitChanges = False #Set to True to commit changes to notes
+        self.commitChanges = True #Set to True to commit changes to notes
 
     def ping(self):
         url = f'{self.baseUrl}ping?{self.tokenUrlPart}'
@@ -59,6 +60,7 @@ if len(argv) <= 1:
     exit('Useage: migrate.py <joplinToken>')
 joplin_token = argv[1]
 joplin_connection = JoplinConnection(joplin_token)
+
 joplin_connection.ping()
 for key, value in replacements.items():
     old = key
@@ -66,4 +68,3 @@ for key, value in replacements.items():
     joplin_connection.searchAndReplace(old, new)
 print('finished!')
 
-# main()
